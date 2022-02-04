@@ -1,0 +1,160 @@
+@font-face {
+    font-family: 'TT Hoves Hairline';
+    src: local('TT Hoves Hairline Italic'), local('TTHoves-HairlineItalic'),
+        url('../assets/fonts/TTHoves-HairlineItalic.woff2') format('woff2');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves ExtraLight Italic'), local('TTHoves-ExtraLightItalic'),
+        url('../assets/fonts/TTHoves-ExtraLightItalic.woff2') format('woff2');
+    font-weight: 200;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Thin'), local('TTHoves-Thin'),
+        url('../assets/fonts/TTHoves-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves DemiBold'), local('TTHoves-DemiBold'),
+        url('../assets/fonts/TTHoves-DemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Bold Italic'), local('TTHoves-BoldItalic'),
+        url('../assets/fonts/TTHoves-BoldItalic.woff2') format('woff2');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Black'), local('TTHoves-Black'),
+        url('../assets/fonts/TTHoves-Black.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves ExtraLight'), local('TTHoves-ExtraLight'),
+        url('../assets/fonts/TTHoves-ExtraLight.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Bold'), local('TTHoves-Bold'),
+        url('../assets/fonts/TTHoves-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Thin Italic'), local('TTHoves-ThinItalic'),
+        url('../assets/fonts/TTHoves-ThinItalic.woff2') format('woff2');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Italic'), local('TTHoves-Italic'),
+        url('../assets/fonts/TTHoves-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Black Italic'), local('TTHoves-BlackItalic'),
+        url('../assets/fonts/TTHoves-BlackItalic.woff2') format('woff2');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves ExtraBold'), local('TTHoves-ExtraBold'),
+        url('../assets/fonts/TTHoves-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves DemiBold Italic'), local('TTHoves-DemiBoldItalic'),
+        url('../assets/fonts/TTHoves-DemiBoldItalic.woff2') format('woff2');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Medium Italic'), local('TTHoves-MediumItalic'),
+        url('../assets/fonts/TTHoves-MediumItalic.woff2') format('woff2');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves ExtraBold Italic'), local('TTHoves-ExtraBoldItalic'),
+        url('../assets/fonts/TTHoves-ExtraBoldItalic.woff2') format('woff2');
+    font-weight: 800;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Regular'), local('TTHoves-Regular'),
+        url('../assets/fonts/TTHoves-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves Hairline';
+    src: local('TT Hoves Hairline'), local('TTHoves-Hairline'),
+        url('../assets/fonts/TTHoves-Hairline.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Light Italic'), local('TTHoves-LightItalic'),
+        url('../assets/fonts/TTHoves-LightItalic.woff2') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Light'), local('TTHoves-Light'),
+        url('../assets/fonts/TTHoves-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Hoves';
+    src: local('TT Hoves Medium'), local('TTHoves-Medium'),
+        url('../assets/fonts/TTHoves-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+}
+

@@ -1,0 +1,46 @@
+#landing{
+    background-color: var(--dark-electric-blue);
+    height: 90vh;
+    width: 100%;
+}
+
+#landing>img{
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 20%;
+    max-height: 80%;
+}
+
+.name{
+    position: absolute;
+    top: 34%;
+    left: 50%;
+    transform: translate(-50%,0);
+    text-align: center;
+    z-index: 3;
+}
+
+.name>h1{
+    margin: 0;
+    text-align: center;
+    font-size: 4vw;
+    font-weight: bold;
+}
+
+.subtitle{
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    text-align: center;
+    font-size: 7vw;
+    font-weight: bold;
+    opacity: 25%;
+    word-break: normal;
+    z-index: 2;
+}
+
+.subtitle>h2{
+    margin: 0;
+}

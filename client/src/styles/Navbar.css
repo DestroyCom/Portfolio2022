@@ -1,0 +1,11 @@
+nav{
+    background-color: var(--dark-electric-blue);
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+nav>div>p{
+    font-size: 1.5em;
+}

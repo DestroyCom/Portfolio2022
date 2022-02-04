@@ -1,0 +1,34 @@
+#myworks{
+    width: 100%;
+    height: 100%;
+    background-color: var(--shadow-blue);
+}
+
+#myworks>h2{
+   font-size: 50px;
+   font-weight: 600;
+   margin: 0 1em;
+   padding: 0.5em;
+}
+
+.project_box_container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 90%;
+}
+
+.project_box_solo{
+    width: 25%;
+    margin: 1%;
+}
+
+.project_box_solo>img{
+    width: 100%;
+    border-radius: 20px;
+}
+
+.project_box_solo>p{
+    font-weight: 200;
+}
