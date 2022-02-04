@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3001;
 var postgrestClient = null;
 
 if (process.env.PROJECT_ENVIRONMENT === "dev") {
-  const postgrestClient = new PG.Client({
+  postgrestClient = new PG.Client({
     user: process.env.PGUSER,
     password: process.env.PGPASSWORD,
     database: process.env.PGDATABASE,
@@ -21,7 +21,7 @@ if (process.env.PROJECT_ENVIRONMENT === "dev") {
     },
   });
 } else if (process.env.PROJECT_ENVIRONMENT === "prod") {
-  const postgrestClient = new PG.Client({
+  postgrestClient = new PG.Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false,
