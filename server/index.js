@@ -21,7 +21,7 @@ if (process.env.PROJECT_ENVIRONMENT === "dev") {
     },
   });
 } else if (process.env.PROJECT_ENVIRONMENT === "prod") {
-  const postgrestClient = new Client({
+  const postgrestClient = new PG.Client({
     connectionString: process.env.DATABASE_URL,
     ssl: {
       rejectUnauthorized: false,
