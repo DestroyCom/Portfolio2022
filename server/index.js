@@ -89,7 +89,9 @@ app.post("/api/sent-message", async (req, res) => {
       );
   });
 
-  return res.status(200).send("Message sent");
+  return res
+    .status(200)
+    .json({ messageEn: "Message sent", messageFr: "Message envoyé" });
 });
 
 app.get("/api/get-project", async (req, res) => {

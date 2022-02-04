@@ -34,7 +34,7 @@
     flex-direction: column;
 }
 
-.contact_box_msg>form div{
+.contact_box_msg>form>div{
     width: 75%;
     display: flex;
     flex-direction: column;
@@ -90,7 +90,56 @@ textarea{
     font-weight: 500;
 }
 
+.contact_box_links>div>div{
+    margin: auto 0;
+}
+
 .contact_box_links>div>div>p:nth-child(2){
     font-weight: 200;
     font-style: italic;
+}
+
+.actions-form{
+    display: flex !important; 
+    justify-content: flex-end !important;
+    flex-direction: unset !important;
+    margin: auto 0 !important;
+}
+
+.actions-form>p{
+    margin: 0;
+    padding: 0;
+    width: 70%;
+    margin: auto;
+}
+
+.send-btn{
+    background-color: var(--rich-black);
+    border: none;
+    border-radius: 20px;
+    padding: 0.5em;
+    margin: auto 0 auto auto;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 25% !important;
+    height: 40px !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+.send-btn>p{
+    margin: auto;
+    font-size: 20px;
+}
+
+.send-btn>img{
+    width: 40%;
+    filter: invert(1);
+    margin: auto;
+    max-height: 30px;
+}
+
+.send-btn.success{
+    opacity: 0.25;
 }
