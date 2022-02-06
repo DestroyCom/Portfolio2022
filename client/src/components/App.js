@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import Navbar from "./Navbar";
 import Landing from "./Landing";
@@ -10,25 +10,21 @@ import Footer from "./Footer";
 import "../styles/App.css";
 
 function App() {
-  /* 
-  const [test, setTest] = useState(null);
-
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setTest(data);
-      });
-  }, []); */
+  const section1Ref = useRef();
+  const section2Ref = useRef();
+  const section3Ref = useRef();
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar
+        section1Ref={section1Ref}
+        section2Ref={section2Ref}
+        section3Ref={section3Ref}
+      />
       <Landing />
-      <Works />
-      <Me />
-      <Contact />
+      <Works section1Ref={section1Ref} />
+      <Me section2Ref={section2Ref} />
+      <Contact section3Ref={section3Ref} />
       <Footer />
     </div>
   );

@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const HTTP = require("http");
 const PG = require("pg");
 const path = require("path");
 //const cors = require("cors");
@@ -10,6 +11,10 @@ const PORT = process.env.PORT || 3001;
 var postgrestClient = null;
 
 if (process.env.PROJECT_ENVIRONMENT === "dev") {
+  setInterval(function () {
+    HTTP.get(process.env.HEROKU_APP_URL);
+  }, 300000);
+
   postgrestClient = new PG.Client({
     user: process.env.PGUSER,
     password: process.env.PGPASSWORD,
@@ -96,7 +101,7 @@ app.post("/api/sent-message", async (req, res) => {
 
 app.get("/api/get-project", async (req, res) => {
   const query = {
-    text: `SELECT * FROM public.projects`,
+    text: `SELECT * FROM public.projects ORDER BY random() LIMIT 6`,
   };
 
   try {

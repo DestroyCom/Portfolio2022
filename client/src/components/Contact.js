@@ -10,7 +10,7 @@ import sent from "../assets/img/sent.svg";
 
 import "../styles/Contact.css";
 
-function Contact() {
+function Contact({ section3Ref }) {
   const [mail, setMail] = useState("");
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
@@ -71,7 +71,7 @@ function Contact() {
   };
 
   return (
-    <div id="contact">
+    <div id="contact" ref={section3Ref}>
       <h2>Contact</h2>
       <div className="contact_box_container">
         <div className="contact_box_msg">

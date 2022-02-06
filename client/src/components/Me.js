@@ -2,9 +2,9 @@ import profile from "../assets/img/profile.jpg";
 
 import "../styles/Me.css";
 
-function Me() {
+function Me({ section2Ref }) {
   return (
-    <div id="aboutme">
+    <div id="aboutme" ref={section2Ref}>
       <h2>Learn to know me</h2>
       <div className="about_me_container">
         <div className="about_me_photo">

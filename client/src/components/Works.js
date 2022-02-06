@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { Buffer } from "buffer";
 
 import "../styles/Works.css";
 
-function Works() {
+function Works({ section1Ref }) {
   const [projects, setProjects] = useState(null);
 
   useEffect(() => {
@@ -14,8 +15,16 @@ function Works() {
       });
   }, []);
 
+  const getUrlAsBlob = (base64, mimetype) => {
+    const data = new Buffer(base64 + mimetype, "base64");
+    const url = window.URL.createObjectURL(
+      new Blob([data], { type: mimetype })
+    );
+    return url;
+  };
+
   return (
-    <div id="myworks">
+    <div id="myworks" ref={section1Ref}>
       <h2>My works</h2>
 
       {!projects ? (
@@ -24,7 +33,10 @@ function Works() {
         <div className="project_box_container">
           {projects.map((project, index) => (
             <div className="project_box_solo" key={"project_box_" + index + 1}>
-              <img src="https://destroykeaum.alwaysdata.net/assets/other/mokepon/gameog.png" />
+              <img
+                src={getUrlAsBlob(project.image_base64, project.image_mimetype)}
+                alt={"project_" + index + 1}
+              />
               <p>
                 {index + 1} - {project.name}
               </p>

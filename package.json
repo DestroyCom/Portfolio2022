@@ -11,6 +11,8 @@
   "author": "Dest.Com",
   "license": "ISC",
   "dependencies": {
+    "buffer": "^6.0.3",
+    "cors": "^2.8.5",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",

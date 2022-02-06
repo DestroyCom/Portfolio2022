@@ -7,5 +7,19 @@ nav{
 }
 
 nav>div>p{
-    font-size: 1.5em;
+   font-size: 1.5em;
+   margin: 15% 0 0 0;
+   padding: 0;
 }
+
+nav>div:hover{
+   cursor: pointer;
+}
+
+.nav_underline {
+    z-index: 1;
+    display: block; 
+    width: 0; 
+    height: calc(1px + 0.1vw);
+    background-color: var(--floral-white);
+  }
