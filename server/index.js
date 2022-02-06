@@ -10,11 +10,11 @@ const PORT = process.env.PORT || 3001;
 
 var postgrestClient = null;
 
-if (process.env.PROJECT_ENVIRONMENT === "dev") {
-  setInterval(function () {
-    HTTP.get(process.env.HEROKU_APP_URL);
-  }, 300000);
+setInterval(function () {
+  HTTP.get(process.env.HEROKU_APP_URL);
+}, 300000);
 
+if (process.env.PROJECT_ENVIRONMENT === "dev") {
   postgrestClient = new PG.Client({
     user: process.env.PGUSER,
     password: process.env.PGPASSWORD,
