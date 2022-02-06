@@ -1,31 +1,19 @@
-import { useEffect, useState, useRef } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Navbar from "./Navbar";
-import Landing from "./Landing";
-import Works from "./Works";
-import Me from "./Me";
-import Contact from "./Contact";
-import Footer from "./Footer";
+import Index from "./Index";
+import Project from "./Project";
+import Redirect from "./Redirect";
 
 import "../styles/App.css";
 
 function App() {
-  const section1Ref = useRef();
-  const section2Ref = useRef();
-  const section3Ref = useRef();
-
   return (
     <div className="App">
-      <Navbar
-        section1Ref={section1Ref}
-        section2Ref={section2Ref}
-        section3Ref={section3Ref}
-      />
-      <Landing />
-      <Works section1Ref={section1Ref} />
-      <Me section2Ref={section2Ref} />
-      <Contact section3Ref={section3Ref} />
-      <Footer />
+      <Routes>
+        <Route path="project/:projectId" element={<Project />} />
+        <Route path="/" element={<Index />} />
+        <Route path="*" element={<Redirect />} />
+      </Routes>
     </div>
   );
 }

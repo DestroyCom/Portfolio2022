@@ -22,6 +22,7 @@
     width: 25%;
     margin: 1%;
     max-height: 35vh;
+    cursor: pointer;
 }
 
 .project_box_solo>img{

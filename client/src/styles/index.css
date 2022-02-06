@@ -46,3 +46,10 @@ h6 {
   -ms-user-select: none;
   user-select: none;
 }
+
+.h1-LOADER{
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+}

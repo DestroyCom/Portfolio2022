@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/Works.css";
 
 function Works({ section1Ref }) {
+  const navigate = useNavigate();
   const [projects, setProjects] = useState(null);
 
   useEffect(() => {
@@ -32,7 +34,11 @@ function Works({ section1Ref }) {
       ) : (
         <div className="project_box_container">
           {projects.map((project, index) => (
-            <div className="project_box_solo" key={"project_box_" + index + 1}>
+            <div
+              className="project_box_solo"
+              key={"project_box_" + index + 1}
+              onClick={() => navigate("/project/" + project.id)}
+            >
               <img
                 src={getUrlAsBlob(project.image_base64, project.image_mimetype)}
                 alt={"project_" + index + 1}

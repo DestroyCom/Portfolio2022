@@ -112,6 +112,20 @@ app.get("/api/get-project", async (req, res) => {
   }
 });
 
+app.get("/api/get-single-project", async (req, res) => {
+  const { projectId } = req.query;
+  const query = {
+    text: `SELECT * FROM public.projects WHERE id = ${projectId}`,
+  };
+
+  try {
+    const result = await postgrestClient.query(query);
+    return res.status(200).json(result.rows[0]);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 /* app.get("/api", (req, res) => {
   res.json({ message: "Hello this is the server" });
 }); */
