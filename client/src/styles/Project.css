@@ -117,7 +117,7 @@
     margin: 0 5%;
 }
 
-.project-specs>div:last-child{
+.project-specs>.team-box{
     margin: 0 5% 0 0;
     padding: 0 0 0 5%;
     border-left: 1px solid var(--shadow-blue);

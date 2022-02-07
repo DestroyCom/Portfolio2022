@@ -12,15 +12,17 @@
 }
 
 .project_box_container{
-    display: flex;
-    flex-wrap: wrap;
     width: 90%;
-    margin: auto auto auto 10%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10%;
+    grid-row-gap: 10%;
 }
 
 .project_box_solo{
-    width: 25%;
-    margin: 1%;
+    width: 100%;
     max-height: 35vh;
     cursor: pointer;
 }

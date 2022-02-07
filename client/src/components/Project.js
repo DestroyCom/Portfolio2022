@@ -52,23 +52,7 @@ function Project() {
           <div className="content">
             <div className="content-box project-descr">
               <h3>Project description :</h3>
-              <p>
-                "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
-                natoque penatibus et magnis dis parturient montes, nascetur
-                ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-                pretium quis, sem. Nulla consequat massa quis enim. Donec pede
-                justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim
-                justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam
-                dictum felis eu pede mollis pretium. Integer tincidunt. Cras
-                dapibus. Vivamus elementum semper nisi. Aenean vulputate
-                eleifend tellus. Aenean leo ligula, porttitor eu, consequat
-                vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in,
-                viverra quis, feugiat a, tellus. Phasellus viverra nulla ut
-                metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam
-                ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
-                Nam eget dui."
-              </p>
+              <p>{projectData.description}</p>
 
               <div className="btn-project-container">
                 <div>
@@ -78,7 +62,7 @@ function Project() {
               </div>
             </div>
             <div className="content-box project-specs">
-              <div>
+              <div className="tech-box">
                 <h3>Tech used :</h3>
                 <ul>
                   {projectData.technos.map((tech) => (
@@ -86,18 +70,16 @@ function Project() {
                   ))}
                 </ul>
               </div>
-              <div>
-                <h3>Team</h3>
-                {projectData.team.length <= 1 ? (
-                  <></>
-                ) : (
+              {projectData.team.length >= 2 && (
+                <div className="team-box">
+                  <h3>Team</h3>
                   <ul>
                     {projectData.team.map((member) => (
                       <li>{member}</li>
                     ))}
                   </ul>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
