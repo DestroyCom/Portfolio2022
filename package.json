@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server/index.js",
     "build": "cd client && npm install && npm run build",
+    "test-prod": "cd client && npm install && npm run build && cd .. && node server/index.js",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "Dest.Com",

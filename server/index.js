@@ -126,6 +126,19 @@ app.get("/api/get-single-project", async (req, res) => {
   }
 });
 
+app.get("/api/get-social-links", async (req, res) => {
+  const query = {
+    text: `SELECT * FROM public.sociallinks`,
+  };
+
+  try {
+    const result = await postgrestClient.query(query);
+    return res.status(200).json(result.rows);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 /* app.get("/api", (req, res) => {
   res.json({ message: "Hello this is the server" });
 }); */
