@@ -54,14 +54,34 @@ export const afterSendMsg = (move, tl, tl2) => {
   tl2.pause();
 };
 
-export const onEnterSocial = (textOne, textTwo, image, image2, tl, tl2) => {
+export const onEnterSocial = (
+  container,
+  textOne,
+  textTwo,
+  textThree,
+  image,
+  image2,
+  tl,
+  tl2
+) => {
   tl.add("start")
+    .to(
+      container,
+      {
+        duration: 0.5,
+        top: 0,
+        ease: "ease",
+      },
+      "start"
+    )
     .to(
       textOne,
       {
         duration: 0.5,
+        opacity: 0,
+        y: -25,
+        //display: "none",
         ease: "ease",
-        y: 25,
       },
       "start"
     )
@@ -69,11 +89,18 @@ export const onEnterSocial = (textOne, textTwo, image, image2, tl, tl2) => {
       textTwo,
       {
         duration: 0.5,
+        y: -15,
         ease: "ease",
-        y: -25,
       },
       "start"
-    );
+    )
+    .to(textThree, {
+      duration: 0.5,
+      opacity: 1,
+      y: -10,
+      display: "block",
+      ease: "ease",
+    });
 
   tl2
     .add("start")
@@ -94,14 +121,33 @@ export const onEnterSocial = (textOne, textTwo, image, image2, tl, tl2) => {
       display: "block",
     });
 };
-export const onLeaveSocial = (textOne, textTwo, image, image2, tl, tl2) => {
+export const onLeaveSocial = (
+  container,
+  textOne,
+  textTwo,
+  textThree,
+  image,
+  image2,
+  tl,
+  tl2
+) => {
   tl.add("start")
+    .to(
+      container,
+      {
+        duration: 0.5,
+        top: 10,
+        ease: "ease",
+      },
+      "start"
+    )
     .to(
       textOne,
       {
         duration: 0.5,
-        ease: "ease",
+        opacity: 1,
         y: 0,
+        ease: "ease",
       },
       "start"
     )
@@ -111,6 +157,17 @@ export const onLeaveSocial = (textOne, textTwo, image, image2, tl, tl2) => {
         duration: 0.5,
         ease: "ease",
         y: 0,
+      },
+      "start"
+    )
+    .to(
+      textThree,
+      {
+        duration: 0.5,
+        opacity: 0,
+        y: 0,
+        //display: "none",
+        ease: "ease",
       },
       "start"
     );

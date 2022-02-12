@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
 import { useNavigate } from "react-router-dom";
 
+import { toOtherPage } from "../gsapFunction/Works";
+
 import "../styles/Works.css";
 
 function Works({ section1Ref }) {
@@ -25,19 +27,23 @@ function Works({ section1Ref }) {
     return url;
   };
 
+  const handleClick = (id) => {
+    navigate("/project/" + id);
+  };
+
   return (
     <div id="myworks" ref={section1Ref}>
       <h2>My works</h2>
 
       {!projects ? (
-        "Loading..."
+        <p>"Loading..."</p>
       ) : (
         <div className="project_box_container">
           {projects.map((project, index) => (
             <div
               className="project_box_solo"
               key={"project_box_" + index + 1}
-              onClick={() => navigate("/project/" + project.id)}
+              onClick={() => handleClick(project.id)}
             >
               <img
                 src={getUrlAsBlob(project.image_base64, project.image_mimetype)}

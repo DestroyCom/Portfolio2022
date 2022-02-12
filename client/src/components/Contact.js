@@ -208,14 +208,22 @@ function Contact({ section3Ref }) {
                     onMouseEnter={() =>
                       onEnterSocial(
                         socialLinksSelector(
-                          ".social-link" +
-                            index +
-                            ">.social-link-text>p:first-child"
+                          ".social-link" + index + ">.social-link-text"
                         ),
                         socialLinksSelector(
                           ".social-link" +
                             index +
-                            ">.social-link-text>p:last-child"
+                            ">.social-link-text>p:nth-child(1)"
+                        ),
+                        socialLinksSelector(
+                          ".social-link" +
+                            index +
+                            ">.social-link-text>p:nth-child(2)"
+                        ),
+                        socialLinksSelector(
+                          ".social-link" +
+                            index +
+                            ">.social-link-text>p:nth-child(3)"
                         ),
                         socialLinksSelector(
                           ".social-link" + index + ">.links-img"
@@ -230,14 +238,22 @@ function Contact({ section3Ref }) {
                     onMouseLeave={() =>
                       onLeaveSocial(
                         socialLinksSelector(
-                          ".social-link" +
-                            index +
-                            ">.social-link-text>p:first-child"
+                          ".social-link" + index + ">.social-link-text"
                         ),
                         socialLinksSelector(
                           ".social-link" +
                             index +
-                            ">.social-link-text>p:last-child"
+                            ">.social-link-text>p:nth-child(1)"
+                        ),
+                        socialLinksSelector(
+                          ".social-link" +
+                            index +
+                            ">.social-link-text>p:nth-child(2)"
+                        ),
+                        socialLinksSelector(
+                          ".social-link" +
+                            index +
+                            ">.social-link-text>p:nth-child(3)"
                         ),
                         socialLinksSelector(
                           ".social-link" + index + ">.links-img"
@@ -256,6 +272,7 @@ function Contact({ section3Ref }) {
                     <div className="social-link-text">
                       <p>{socialLink.platform.toUpperCase()}</p>
                       <p>{socialLink.username}</p>
+                      <p>Go to {socialLink.platform.toLowerCase()}.com</p>
                     </div>
                     {socialLink.icone.toLowerCase() === "github" && (
                       <img
