@@ -1,9 +1,20 @@
 .App {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   margin: 0;
   padding: 0;
   background-color: var(--shadow-blue);
   color: var(--floral-white);
   /* overflow-x: hidden; */
+}
+
+#LOAD{
+  width: 100%;
+  height: 100%;
+  background-color: var(--shadow-blue);
+  color: var(--floral-white);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
 }

@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { useTranslation } from "react-i18next";
 
 import logo from "../assets/img/logo.svg";
 
@@ -9,6 +10,7 @@ function Landing() {
   const subtitleRef = useRef();
   const nameRef = useRef();
   const tl = useRef();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const q = gsap.utils.selector(nameRef);
@@ -47,7 +49,7 @@ function Landing() {
         <h1>AZEVEDO DA SILVA</h1>
       </div>
       <div className="subtitle" ref={subtitleRef}>
-        <h2>WEB DEVELOPER</h2>
+        <h2>{t("landing.text").toUpperCase()}</h2>
       </div>
       <img src={logo} alt="" />
     </div>

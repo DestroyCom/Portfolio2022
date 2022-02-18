@@ -1,9 +1,11 @@
 import { gsap } from "gsap";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 import "../styles/Navbar.css";
 
 function Navbar({ section1Ref, section2Ref, section3Ref }) {
+  const { t } = useTranslation();
   const executeScroll = (ref) => {
     console.log(ref);
     ref.current.scrollIntoView({ behavior: "smooth" });
@@ -47,7 +49,7 @@ function Navbar({ section1Ref, section2Ref, section3Ref }) {
         onMouseLeave={onLeave}
         onClick={() => executeScroll(section1Ref)}
       >
-        <p>WORKS</p>
+        <p>{t("navigation.works").toUpperCase()}</p>
         <div className="nav_underline" />
       </div>
       <div
@@ -55,7 +57,7 @@ function Navbar({ section1Ref, section2Ref, section3Ref }) {
         onMouseLeave={onLeave}
         onClick={() => executeScroll(section2Ref)}
       >
-        <p>ABOUT ME</p>
+        <p>{t("navigation.about").toUpperCase()}</p>
         <div className="nav_underline" />
       </div>
       <div
@@ -63,7 +65,7 @@ function Navbar({ section1Ref, section2Ref, section3Ref }) {
         onMouseLeave={onLeave}
         onClick={() => executeScroll(section3Ref)}
       >
-        <p>CONTACT</p>
+        <p>{t("navigation.contact").toUpperCase()}</p>
         <div className="nav_underline" />
       </div>
     </nav>

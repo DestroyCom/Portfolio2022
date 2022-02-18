@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { Buffer } from "buffer";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import { toOtherPage } from "../gsapFunction/Works";
 
 import "../styles/Works.css";
 
-function Works({ section1Ref }) {
+const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.6] };
+
+function Works({ section1Ref, setProjectData }) {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [projects, setProjects] = useState(null);
 
   useEffect(() => {
@@ -27,34 +32,42 @@ function Works({ section1Ref }) {
     return url;
   };
 
-  const handleClick = (id) => {
+  const handleClick = (id, index) => {
+    setProjectData(projects[index]);
+    sessionStorage.setItem("projectData", JSON.stringify(projects[index]));
     navigate("/project/" + id);
   };
 
   return (
     <div id="myworks" ref={section1Ref}>
-      <h2>My works</h2>
+      <h2>{t("navigation.works")}</h2>
 
-      {!projects ? (
-        <p>"Loading..."</p>
-      ) : (
-        <div className="project_box_container">
+      {projects && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={transition}
+          className="project_box_container"
+        >
           {projects.map((project, index) => (
             <div
               className="project_box_solo"
               key={"project_box_" + index + 1}
-              onClick={() => handleClick(project.id)}
+              onClick={() => handleClick(project.id, index)}
             >
-              <img
+              <motion.img
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.9 }}
+                transition={transition}
                 src={getUrlAsBlob(project.image_base64, project.image_mimetype)}
                 alt={"project_" + index + 1}
               />
-              <p>
+              <motion.p exit={{ opacity: 0 }} transition={transition}>
                 {index + 1} - {project.name}
-              </p>
+              </motion.p>
             </div>
           ))}
-        </div>
+        </motion.div>
       )}
     </div>
   );

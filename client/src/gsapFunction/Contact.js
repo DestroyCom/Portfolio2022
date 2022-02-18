@@ -62,9 +62,21 @@ export const onEnterSocial = (
   image,
   image2,
   tl,
-  tl2
+  tl2,
+  index
 ) => {
-  tl.add("start")
+  if (tl[index].isActive()) {
+    console.log("isActive");
+    return;
+  }
+
+  if (tl2[index].isActive()) {
+    console.log("isActive");
+    return;
+  }
+
+  tl[index]
+    .add("start")
     .to(
       container,
       {
@@ -102,7 +114,7 @@ export const onEnterSocial = (
       ease: "ease",
     });
 
-  tl2
+  tl2[index]
     .add("start")
     .to(
       image,
@@ -121,6 +133,7 @@ export const onEnterSocial = (
       display: "block",
     });
 };
+
 export const onLeaveSocial = (
   container,
   textOne,
@@ -129,9 +142,11 @@ export const onLeaveSocial = (
   image,
   image2,
   tl,
-  tl2
+  tl2,
+  index
 ) => {
-  tl.add("start")
+  tl[index]
+    .add("start")
     .to(
       container,
       {
@@ -172,7 +187,7 @@ export const onLeaveSocial = (
       "start"
     );
 
-  tl2
+  tl2[index]
     .add("start")
     .to(
       image2,

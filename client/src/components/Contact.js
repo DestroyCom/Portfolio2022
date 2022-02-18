@@ -1,6 +1,8 @@
 import axios from "axios";
 import { gsap } from "gsap";
+import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { validEmailRegex, whiteSpace } from "../regex/Regex";
 
 import {
@@ -22,7 +24,11 @@ import externalLink from "../assets/img/external-link.svg";
 
 import "../styles/Contact.css";
 
+const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.6] };
+
 function Contact({ section3Ref }) {
+  const { t } = useTranslation();
+
   //GSAP animation refs and timeline for contact form
   const sendMsg = useRef(null);
   const sendMessageSelector = gsap.utils.selector(sendMsg);
@@ -139,13 +145,13 @@ function Contact({ section3Ref }) {
 
   return (
     <div id="contact" ref={section3Ref}>
-      <h2>Contact</h2>
+      <h2>{t("navigation.contact")}</h2>
       <div className="contact_box_container">
         <div className="contact_box_msg">
-          <h3>Something to say ?</h3>
+          <h3>{t("contact.blocOne.title")}</h3>
           <form>
             <div>
-              <label>Your email :</label>
+              <label>{t("contact.blocOne.fieldOne")}</label>
               <input
                 type="email"
                 name="email"
@@ -153,7 +159,7 @@ function Contact({ section3Ref }) {
               />
             </div>
             <div>
-              <label>Your name :</label>
+              <label>{t("contact.blocOne.fieldTwo")}</label>
               <input
                 type="text"
                 name="name"
@@ -161,7 +167,7 @@ function Contact({ section3Ref }) {
               />
             </div>
             <div>
-              <label>Your message :</label>
+              <label>{t("contact.blocOne.fieldThree")}</label>
               <textarea
                 name="message"
                 onChange={(e) => setMessage(e.target.value)}
@@ -174,8 +180,11 @@ function Contact({ section3Ref }) {
                 </p>
               )}
               {success && <p> Your message has been sent !</p>}
-              <div
-                className={success ? "send-btn success" : "send-btn"}
+              <motion.div
+                whileTap={{ scale: 0.9 }}
+                className={
+                  success ? "send-btn success noselect" : "send-btn noselect"
+                }
                 onClick={(e) => handleSubmit(e)}
                 onMouseEnter={() =>
                   onEnterMsg(
@@ -192,19 +201,21 @@ function Contact({ section3Ref }) {
                   )
                 }
               >
-                <p>Send</p>
+                <p>{t("contact.blocOne.sendButton")}</p>
                 <img src={sent} alt="sent" className="send-arrow" />
-              </div>
+              </motion.div>
             </div>
           </form>
         </div>
         <div className="contact_box_links_container">
-          <h3>Let's keep in touch</h3>
+          <h3>{t("contact.blocTwo.title")}</h3>
           <div className="contact_box_links" ref={socialLinksRef}>
             {socialLinks && (
               <>
                 {socialLinks.map((socialLink, index) => (
-                  <div
+                  <motion.div
+                    whileTap={{ scale: 0.9 }}
+                    transition={transition}
                     onMouseEnter={() =>
                       onEnterSocial(
                         socialLinksSelector(
@@ -231,8 +242,9 @@ function Contact({ section3Ref }) {
                         socialLinksSelector(
                           ".social-link" + index + ">.goToSocial"
                         ),
-                        socialLinksTimeline[index],
-                        imageLinksTimeline[index]
+                        socialLinksTimeline,
+                        imageLinksTimeline,
+                        index
                       )
                     }
                     onMouseLeave={() =>
@@ -261,18 +273,27 @@ function Contact({ section3Ref }) {
                         socialLinksSelector(
                           ".social-link" + index + ">.goToSocial"
                         ),
-                        socialLinksTimeline[index],
-                        imageLinksTimeline[index]
+                        socialLinksTimeline,
+                        imageLinksTimeline,
+                        index
                       )
                     }
                     onClick={() => goTo(socialLink.link, index)}
                     key={"social_links_" + socialLink.platform}
-                    className={"social-link" + index}
+                    className={"social-link" + index + " noselect"}
                   >
                     <div className="social-link-text">
                       <p>{socialLink.platform.toUpperCase()}</p>
                       <p>{socialLink.username}</p>
-                      <p>Go to {socialLink.platform.toLowerCase()}.com</p>
+                      <p>
+                        {socialLink.platform.toLowerCase() === "email"
+                          ? t("contact.blocTwo.msgTwo")
+                          : t("contact.blocTwo.msg")}{" "}
+                        {socialLink.platform.toLowerCase()}
+                        {socialLink.platform.toLowerCase() === "email"
+                          ? ""
+                          : ".com"}
+                      </p>
                     </div>
                     {socialLink.icone.toLowerCase() === "github" && (
                       <img
@@ -307,7 +328,7 @@ function Contact({ section3Ref }) {
                       alt={"go-to-" + socialLink.platform}
                       className="goToSocial"
                     />
-                  </div>
+                  </motion.div>
                 ))}
               </>
             )}

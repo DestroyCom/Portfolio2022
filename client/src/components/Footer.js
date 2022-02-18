@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 import "../styles/Footer.css";
 
 function Footer() {
-  const [fr, setFr] = useState(false);
+  const { i18n, t } = useTranslation();
 
   return (
     <footer>
@@ -13,19 +14,46 @@ function Footer() {
           <p>Portfolio 2022</p>
         </div>
         <div>
-          {fr ? (
-            <p>
-              <span className="bolder">French version</span> - English version
-            </p>
-          ) : (
-            <p>
-              French version - <span className="bolder">English version</span>
-            </p>
-          )}
+          <motion.p
+            initial={{ opacity: 1 }}
+            whileTap={
+              i18n.resolvedLanguage === "en" && { scale: 0.9, opacity: 0.5 }
+            }
+            style={{
+              fontWeight: i18n.resolvedLanguage === "fr" ? "bold" : "normal",
+            }}
+            className={
+              i18n.resolvedLanguage === "en"
+                ? "pointerFooter noselect"
+                : "noselect"
+            }
+            onClick={() => i18n.changeLanguage("fr")}
+          >
+            {t("footer.textTwo.langOne")}
+          </motion.p>
+          <p className="noselect"> - </p>
+          <motion.p
+            initial={{ opacity: 1 }}
+            whileTap={
+              i18n.resolvedLanguage === "fr" && { scale: 0.9, opacity: 0.5 }
+            }
+            style={{
+              fontWeight: i18n.resolvedLanguage === "en" ? "bold" : "normal",
+            }}
+            className={
+              i18n.resolvedLanguage === "fr"
+                ? "pointerFooter noselect"
+                : "noselect"
+            }
+            onClick={() => i18n.changeLanguage("en")}
+          >
+            {t("footer.textTwo.langTwo")}
+          </motion.p>
         </div>
         <div>
           <p>
-            Made by me with <span className="underline">this</span>
+            {t("footer.textThree.partOne")}{" "}
+            <span className="underline">{t("footer.textThree.partTwo")}</span>
           </p>
         </div>
       </div>
