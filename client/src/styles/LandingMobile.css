@@ -60,6 +60,8 @@
     #navMobile>.menuOpen {
         flex-direction: unset;
         justify-content: space-around;
+        position: relative;
+        top: -100%;
     }
 
     #landing-mobile>div:nth-child(2) {
