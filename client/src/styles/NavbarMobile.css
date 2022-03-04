@@ -1,0 +1,26 @@
+#navMobile{
+    height: 10vh;
+    background-color: var(--dark-electric-blue);
+    position: relative;
+    z-index: 5;
+}
+
+#navMobile>div{
+    height: 100%;
+    width: 85%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#navMobile>.menuOpen{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    text-align: right;
+}
+
+#navMobile>div>img{
+    height: 100%;
+    filter: invert(1);
+}

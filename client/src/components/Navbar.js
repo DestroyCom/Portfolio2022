@@ -1,5 +1,4 @@
 import { gsap } from "gsap";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 import "../styles/Navbar.css";
@@ -43,7 +42,7 @@ function Navbar({ section1Ref, section2Ref, section3Ref }) {
   };
 
   return (
-    <nav className="noselect">
+    <nav id="nav" className="noselect">
       <div
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}

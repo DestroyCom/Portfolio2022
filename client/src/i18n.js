@@ -37,12 +37,12 @@ const resources = {
       },
       footer: {
         textTwo: {
-          langOne: "French version",
+          langOne: "Version française",
           langTwo: "English version",
         },
         textThree: {
           partOne: "Fait main avec",
-          partTwo: "ça",
+          partTwo: "ça  ",
         },
       },
       project: {
@@ -85,7 +85,7 @@ const resources = {
       footer: {
         textTwo: {
           langOne: "Version française",
-          langTwo: "Version anglaise",
+          langTwo: "English version",
         },
         textThree: {
           partOne: "Made by me with",

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Buffer } from "buffer";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
 
 import { toOtherPage } from "../gsapFunction/Works";
 
@@ -11,9 +12,12 @@ import "../styles/Works.css";
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.6] };
 
 function Works({ section1Ref, setProjectData }) {
+  const isBigScreen = useMediaQuery({ query: "(min-width: 1024px)" });
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [projects, setProjects] = useState(null);
+  const [width, setWidth] = useState(0);
+  const carouselRef = useRef(null);
 
   useEffect(() => {
     fetch("/api/get-project")
@@ -22,6 +26,10 @@ function Works({ section1Ref, setProjectData }) {
         console.log(data);
         setProjects(data);
       });
+    if (!isBigScreen)
+      setWidth(
+        carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
+      );
   }, []);
 
   const getUrlAsBlob = (base64, mimetype) => {
@@ -42,32 +50,82 @@ function Works({ section1Ref, setProjectData }) {
     <div id="myworks" ref={section1Ref}>
       <h2>{t("navigation.works")}</h2>
 
-      {projects && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={transition}
-          className="project_box_container"
-        >
-          {projects.map((project, index) => (
-            <div
-              className="project_box_solo"
-              key={"project_box_" + index + 1}
-              onClick={() => handleClick(project.id, index)}
+      {isBigScreen ? (
+        <>
+          {projects && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={transition}
+              className="project_box_container"
             >
-              <motion.img
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.9 }}
-                transition={transition}
-                src={getUrlAsBlob(project.image_base64, project.image_mimetype)}
-                alt={"project_" + index + 1}
-              />
-              <motion.p exit={{ opacity: 0 }} transition={transition}>
-                {index + 1} - {project.name}
-              </motion.p>
-            </div>
-          ))}
-        </motion.div>
+              {projects.map((project, index) => (
+                <div
+                  className="project_box_solo"
+                  key={"project_box_" + index + 1}
+                  onClick={() => handleClick(project.id, index)}
+                >
+                  <motion.img
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={transition}
+                    src={getUrlAsBlob(
+                      project.image_base64,
+                      project.image_mimetype
+                    )}
+                    alt={"project_" + index + 1}
+                  />
+                  <motion.p exit={{ opacity: 0 }} transition={transition}>
+                    {index + 1} - {project.name}
+                  </motion.p>
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </>
+      ) : (
+        <>
+          {projects && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={transition}
+              className="project_box_container_mobile"
+            >
+              <motion.div
+                drag="x"
+                dragConstraints={{ right: 0, left: -width }}
+                className="project_box_container_mobile_inner"
+                ref={carouselRef}
+              >
+                {projects.map((project, index) => (
+                  <div
+                    className="project_box_solo_mobile"
+                    key={"project_box_" + index + 1}
+                    onClick={() => handleClick(project.id, index)}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.9 }}
+                      transition={transition}
+                    >
+                      <motion.img
+                        src={getUrlAsBlob(
+                          project.image_base64,
+                          project.image_mimetype
+                        )}
+                        alt={"project_" + index + 1}
+                      />
+                    </motion.div>
+                    <motion.p exit={{ opacity: 0 }} transition={transition}>
+                      {index + 1} - {project.name}
+                    </motion.p>
+                  </div>
+                ))}
+              </motion.div>
+            </motion.div>
+          )}
+        </>
       )}
     </div>
   );

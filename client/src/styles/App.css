@@ -18,3 +18,9 @@
   left: 0;
   z-index: 10;
 }
+
+@media only screen and (max-width: 1023px) {
+  .App {
+    background-color: var(--dark-electric-blue);
+  }
+}

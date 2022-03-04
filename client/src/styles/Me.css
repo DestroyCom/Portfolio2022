@@ -18,7 +18,8 @@
 }
 
 .about_me_photo{
-    width: 25%;
+    width: 35%;
+    max-width: 530px;
 }
 
 .about_me_photo>img{
@@ -34,3 +35,35 @@
     width: 130%;
     height: 100%;
 }
+
+@media only screen and (max-width: 1023px) {
+    #aboutme{
+        height: auto;
+    }
+
+    #aboutme>h2{
+        margin: 0 auto;
+     }
+
+    .about_me_container{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .about_me_photo{
+        width: 85%;
+        margin: 1em auto;
+    }
+
+    .about_me_text{
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .about_me_text>p{
+        width: 100%;
+        height: auto;
+    }
+  }

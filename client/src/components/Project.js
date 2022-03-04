@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Buffer } from "buffer";
 import { useTranslation } from "react-i18next";
 import leftArrow from "../assets/img/left-arrow.svg";
@@ -82,9 +82,9 @@ function Project({ projectData, setProjectData, setWorkSection }) {
             <div className="content-box project-descr">
               <h3>{t("project.textOne")}</h3>
               {i18n.resolvedLanguage === "fr" ? (
-                <p>{projectData.description}</p>
+                <p>{projectData.description_fr}</p>
               ) : (
-                <p>{projectData.description}</p>
+                <p>{projectData.description_en}</p>
               )}
 
               {projectData.url && (
@@ -106,7 +106,7 @@ function Project({ projectData, setProjectData, setWorkSection }) {
                 <ul>
                   {projectData.technos.map((tech, index) => (
                     <>
-                      {tech[1] === null ? (
+                      {tech[1] === null || tech[1] === "|" ? (
                         <li key={index + "-team"}>{tech[0]}</li>
                       ) : (
                         <motion.li
@@ -129,7 +129,7 @@ function Project({ projectData, setProjectData, setWorkSection }) {
                   <ul>
                     {projectData.team.map((member, index) => (
                       <>
-                        {member[1] === null ? (
+                        {member[1] === null || member[1] === "|" ? (
                           <li key={index + "-member"}>{member[0]}</li>
                         ) : (
                           <motion.li

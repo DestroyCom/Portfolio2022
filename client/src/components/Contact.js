@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { useMediaQuery } from "react-responsive";
+
 import { validEmailRegex, whiteSpace } from "../regex/Regex";
 
 import {
@@ -49,6 +51,8 @@ function Contact({ section3Ref }) {
   const [success, setSuccess] = useState(false);
   const [socialLinks, setSocialLinks] = useState(false);
 
+  const isBigScreen = useMediaQuery({ query: "(min-width: 1024px)" });
+
   //Get social links from backend
   useEffect(() => {
     axios.get("/api/get-social-links").then((res) => {
@@ -72,7 +76,7 @@ function Contact({ section3Ref }) {
 
   //Function to open social links
   const goTo = (link, index) => {
-    onClickSocial(".social-link" + index, gsap.timeline());
+    if (isBigScreen) onClickSocial(".social-link" + index, gsap.timeline());
     setTimeout(() => {
       window.open(link, "_newtab" + index);
     }, 500);
@@ -186,20 +190,22 @@ function Contact({ section3Ref }) {
                   success ? "send-btn success noselect" : "send-btn noselect"
                 }
                 onClick={(e) => handleSubmit(e)}
-                onMouseEnter={() =>
-                  onEnterMsg(
-                    sendMessageSelector(".send-btn>.send-arrow"),
-                    msgTimeline,
-                    success
-                  )
-                }
-                onMouseLeave={() =>
-                  onLeaveMsg(
-                    sendMessageSelector(".send-btn>.send-arrow"),
-                    msgTimeline,
-                    success
-                  )
-                }
+                onMouseEnter={() => {
+                  if (isBigScreen)
+                    onEnterMsg(
+                      sendMessageSelector(".send-btn>.send-arrow"),
+                      msgTimeline,
+                      success
+                    );
+                }}
+                onMouseLeave={() => {
+                  if (isBigScreen)
+                    onLeaveMsg(
+                      sendMessageSelector(".send-btn>.send-arrow"),
+                      msgTimeline,
+                      success
+                    );
+                }}
               >
                 <p>{t("contact.blocOne.sendButton")}</p>
                 <img src={sent} alt="sent" className="send-arrow" />
@@ -216,68 +222,70 @@ function Contact({ section3Ref }) {
                   <motion.div
                     whileTap={{ scale: 0.9 }}
                     transition={transition}
-                    onMouseEnter={() =>
-                      onEnterSocial(
-                        socialLinksSelector(
-                          ".social-link" + index + ">.social-link-text"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" +
-                            index +
-                            ">.social-link-text>p:nth-child(1)"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" +
-                            index +
-                            ">.social-link-text>p:nth-child(2)"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" +
-                            index +
-                            ">.social-link-text>p:nth-child(3)"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" + index + ">.links-img"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" + index + ">.goToSocial"
-                        ),
-                        socialLinksTimeline,
-                        imageLinksTimeline,
-                        index
-                      )
-                    }
-                    onMouseLeave={() =>
-                      onLeaveSocial(
-                        socialLinksSelector(
-                          ".social-link" + index + ">.social-link-text"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" +
-                            index +
-                            ">.social-link-text>p:nth-child(1)"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" +
-                            index +
-                            ">.social-link-text>p:nth-child(2)"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" +
-                            index +
-                            ">.social-link-text>p:nth-child(3)"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" + index + ">.links-img"
-                        ),
-                        socialLinksSelector(
-                          ".social-link" + index + ">.goToSocial"
-                        ),
-                        socialLinksTimeline,
-                        imageLinksTimeline,
-                        index
-                      )
-                    }
+                    onMouseEnter={() => {
+                      if (isBigScreen)
+                        onEnterSocial(
+                          socialLinksSelector(
+                            ".social-link" + index + ">.social-link-text"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" +
+                              index +
+                              ">.social-link-text>p:nth-child(1)"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" +
+                              index +
+                              ">.social-link-text>p:nth-child(2)"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" +
+                              index +
+                              ">.social-link-text>p:nth-child(3)"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" + index + ">.links-img"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" + index + ">.goToSocial"
+                          ),
+                          socialLinksTimeline,
+                          imageLinksTimeline,
+                          index
+                        );
+                    }}
+                    onMouseLeave={() => {
+                      if (isBigScreen)
+                        onLeaveSocial(
+                          socialLinksSelector(
+                            ".social-link" + index + ">.social-link-text"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" +
+                              index +
+                              ">.social-link-text>p:nth-child(1)"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" +
+                              index +
+                              ">.social-link-text>p:nth-child(2)"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" +
+                              index +
+                              ">.social-link-text>p:nth-child(3)"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" + index + ">.links-img"
+                          ),
+                          socialLinksSelector(
+                            ".social-link" + index + ">.goToSocial"
+                          ),
+                          socialLinksTimeline,
+                          imageLinksTimeline,
+                          index
+                        );
+                    }}
                     onClick={() => goTo(socialLink.link, index)}
                     key={"social_links_" + socialLink.platform}
                     className={"social-link" + index + " noselect"}
