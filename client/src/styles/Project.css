@@ -142,3 +142,66 @@
 ul, li{
     list-style-type: none;
 }
+
+@media only screen and (max-width: 1023px) {
+    #project-id {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        background-color: var(--shadow-blue);
+        overflow: hidden;
+    }
+
+    .header {
+        margin: 0.5em auto 1em auto;
+        height: auto;
+        width: 90%;
+    }
+
+    .header>h1{
+        font-size: 6vw;
+    text-align: right;
+    }
+
+    .header>div {
+        width: 20%;
+    }
+
+    .header>div>img {
+        width: 100%;
+        height: auto;
+    }
+
+    .header>h1 {
+       margin: auto;
+    }
+    
+    .project-img{
+        height: auto;
+        width: 85%;
+        padding: auto;
+    }
+
+    .project-img>img{
+        height: auto;
+        width: 100%;
+    }
+
+    .content{
+        width: 100%;
+        height: auto;
+        padding: 0;
+        justify-content: unset;
+        flex-direction: column;
+    }
+
+    .content-box{
+        width: 85%;
+        margin: 1em auto;
+    }
+
+    ul{
+        padding: 0;
+    }
+}
