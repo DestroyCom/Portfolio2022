@@ -25,11 +25,11 @@ function Works({ section1Ref, setProjectData }) {
       .then((data) => {
         console.log(data);
         setProjects(data);
+        if (!isBigScreen)
+          setWidth(
+            carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
+          );
       });
-    if (!isBigScreen)
-      setWidth(
-        carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
-      );
   }, []);
 
   const getUrlAsBlob = (base64, mimetype) => {
@@ -50,40 +50,7 @@ function Works({ section1Ref, setProjectData }) {
     <div id="myworks" ref={section1Ref}>
       <h2>{t("navigation.works")}</h2>
 
-      {isBigScreen ? (
-        <>
-          {projects && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={transition}
-              className="project_box_container"
-            >
-              {projects.map((project, index) => (
-                <div
-                  className="project_box_solo"
-                  key={"project_box_" + index + 1}
-                  onClick={() => handleClick(project.id, index)}
-                >
-                  <motion.img
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.9 }}
-                    transition={transition}
-                    src={getUrlAsBlob(
-                      project.image_base64,
-                      project.image_mimetype
-                    )}
-                    alt={"project_" + index + 1}
-                  />
-                  <motion.p exit={{ opacity: 0 }} transition={transition}>
-                    {index + 1} - {project.name}
-                  </motion.p>
-                </div>
-              ))}
-            </motion.div>
-          )}
-        </>
-      ) : (
+      {!isBigScreen ? (
         <>
           {projects && (
             <motion.div
@@ -123,6 +90,39 @@ function Works({ section1Ref, setProjectData }) {
                   </div>
                 ))}
               </motion.div>
+            </motion.div>
+          )}
+        </>
+      ) : (
+        <>
+          {projects && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={transition}
+              className="project_box_container"
+            >
+              {projects.map((project, index) => (
+                <div
+                  className="project_box_solo"
+                  key={"project_box_" + index + 1}
+                  onClick={() => handleClick(project.id, index)}
+                >
+                  <motion.img
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={transition}
+                    src={getUrlAsBlob(
+                      project.image_base64,
+                      project.image_mimetype
+                    )}
+                    alt={"project_" + index + 1}
+                  />
+                  <motion.p exit={{ opacity: 0 }} transition={transition}>
+                    {index + 1} - {project.name}
+                  </motion.p>
+                </div>
+              ))}
             </motion.div>
           )}
         </>
