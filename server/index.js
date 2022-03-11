@@ -64,100 +64,118 @@ app.use(helmet());
 
 app.post("/api/sent-message", async (req, res) => {
   if (
-    process.env.PROJECT_ENVIRONMENT === "prod" &&
-    req.headers.host !== "destcom.herokuapp.com"
-  )
-    return res.status(403).send("Forbidden");
-  const { name, mail, message } = req.body;
+    req.headers["sec-fetch-site"] === "same-origin" ||
+    req.headers["sec-fetch-site"] === "same-site"
+  ) {
+    const { name, mail, message } = req.body;
 
-  const user = await discordClient.users
-    .fetch(process.env.DISCORD_USER_ID)
-    .catch(() => null);
+    const user = await discordClient.users
+      .fetch(process.env.DISCORD_USER_ID)
+      .catch(() => null);
 
-  if (!user)
+    if (!user)
+      return res
+        .status(500)
+        .send("Impossible d'envoyer le message. Raison : User not found");
+
+    const embed = new DISCORDJS.MessageEmbed()
+      .setColor("#0099ff")
+      .setTitle("Message de la part de " + name + " (" + mail + ")")
+      .addFields({
+        name: "Message :",
+        value: message,
+      })
+      .setTimestamp();
+
+    await user.send({ embeds: [embed] }).catch(() => {
+      return res
+        .status(500)
+        .send(
+          "Impossible d'envoyer le message. Raison : User has close the service"
+        );
+    });
+
     return res
-      .status(500)
-      .send("Impossible d'envoyer le message. Raison : User not found");
-
-  const embed = new DISCORDJS.MessageEmbed()
-    .setColor("#0099ff")
-    .setTitle("Message de la part de " + name + " (" + mail + ")")
-    .addFields({
-      name: "Message :",
-      value: message,
-    })
-    .setTimestamp();
-
-  await user.send({ embeds: [embed] }).catch(() => {
-    return res
-      .status(500)
-      .send(
-        "Impossible d'envoyer le message. Raison : User has close the service"
-      );
-  });
-
-  return res
-    .status(200)
-    .json({ messageEn: "Message sent", messageFr: "Message envoyé" });
+      .status(200)
+      .json({ messageEn: "Message sent", messageFr: "Message envoyé" });
+  } else {
+    return res.sendStatus(403);
+  }
 });
 
 app.get("/api/get-project", async (req, res) => {
-  const query = {
-    text: `SELECT * FROM public.projects ORDER BY random() LIMIT 6`,
-  };
+  if (
+    req.headers["sec-fetch-site"] === "same-origin" ||
+    req.headers["sec-fetch-site"] === "same-site"
+  ) {
+    const query = {
+      text: `SELECT * FROM public.projects ORDER BY random() LIMIT 6`,
+    };
 
-  try {
-    const result = await postgrestClient.query(query);
-    return res.status(200).json(result.rows);
-  } catch (err) {
-    console.log(err);
+    try {
+      const result = await postgrestClient.query(query);
+      return res.status(200).json(result.rows);
+    } catch (err) {
+      console.log(err);
+    }
+  } else {
+    return res.sendStatus(403);
   }
 });
 
 app.get("/api/get-single-project", async (req, res) => {
-  const { projectId } = req.query;
-  const query = {
-    text: `SELECT * FROM public.projects WHERE id = ${projectId}`,
-  };
+  if (
+    req.headers["sec-fetch-site"] === "same-origin" ||
+    req.headers["sec-fetch-site"] === "same-site"
+  ) {
+    const { projectId } = req.query;
+    const query = {
+      text: `SELECT * FROM public.projects WHERE id = ${projectId}`,
+    };
 
-  try {
-    const result = await postgrestClient.query(query);
-    return res.status(200).json(result.rows[0]);
-  } catch (err) {
-    console.log(err);
+    try {
+      const result = await postgrestClient.query(query);
+      return res.status(200).json(result.rows[0]);
+    } catch (err) {
+      console.log(err);
+    }
+  } else {
+    return res.sendStatus(403);
   }
 });
 
 app.get("/api/get-social-links", async (req, res) => {
   if (
-    process.env.PROJECT_ENVIRONMENT === "prod" &&
-    req.headers.host !== "destcom.herokuapp.com"
-  )
-    return res.status(403).send("Forbidden");
+    req.headers["sec-fetch-site"] === "same-origin" ||
+    req.headers["sec-fetch-site"] === "same-site"
+  ) {
+    const query = {
+      text: `SELECT * FROM public.sociallinks`,
+    };
 
-  const query = {
-    text: `SELECT * FROM public.sociallinks`,
-  };
-
-  try {
-    const result = await postgrestClient.query(query);
-    return res.status(200).json(result.rows);
-  } catch (err) {
-    console.log(err);
+    try {
+      const result = await postgrestClient.query(query);
+      return res.status(200).json(result.rows);
+    } catch (err) {
+      console.log(err);
+    }
+  } else {
+    return res.sendStatus(403);
   }
 });
 
 app.get("/api", (req, res) => {
   if (
-    process.env.PROJECT_ENVIRONMENT === "prod" &&
-    req.headers.host !== "destcom.herokuapp.com"
-  )
-    return res.status(403).send("Forbidden");
-
-  res.json({
-    message: "Hello this is the server",
-    ip: req.headers.host,
-  });
+    req.headers["sec-fetch-site"] === "same-origin" ||
+    req.headers["sec-fetch-site"] === "same-site"
+  ) {
+    res.json({
+      message: "Hello this is the server",
+      ip: req.headers.host,
+    });
+  } else {
+    return res.sendStatus(403);
+  }
 });
 
 app.get("*", (req, res) => {
