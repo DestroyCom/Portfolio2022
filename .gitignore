@@ -1,5 +1,6 @@
 database-manager
 .env
+crypto.js
 
 # dependencies
 /node_modules
