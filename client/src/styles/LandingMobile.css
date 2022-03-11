@@ -57,6 +57,11 @@
         height: 15vh;
     }
 
+    #navMobile>div {
+        position: relative;
+        z-index: 15;
+    }
+
     #navMobile>.menuOpen {
         flex-direction: unset;
         justify-content: space-around;

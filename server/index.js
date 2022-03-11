@@ -7,6 +7,7 @@ const path = require("path");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const helmet = require("helmet");
 //const API_KEY = process.env.API_KEY;
 
 var postgrestClient = null;
@@ -65,6 +66,7 @@ var corsOptions = {
 app.use(cors(corsOptions)); */
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(express.json());
+app.use(helmet());
 
 app.post("/api/sent-message", async (req, res) => {
   const { name, mail, message } = req.body;
