@@ -129,6 +129,12 @@ app.get("/api/get-single-project", async (req, res) => {
 });
 
 app.get("/api/get-social-links", async (req, res) => {
+  if (
+    process.env.PROJECT_ENVIRONMENT === "prod" &&
+    req.headers.host !== "destcom.herokuapp.com"
+  )
+    return res.status(403).send("Forbidden");
+
   const query = {
     text: `SELECT * FROM public.sociallinks`,
   };
@@ -142,6 +148,12 @@ app.get("/api/get-social-links", async (req, res) => {
 });
 
 app.get("/api", (req, res) => {
+  if (
+    process.env.PROJECT_ENVIRONMENT === "prod" &&
+    req.headers.host !== "destcom.herokuapp.com"
+  )
+    return res.status(403).send("Forbidden");
+
   res.json({
     message: "Hello this is the server",
     ip: req.headers.host,
