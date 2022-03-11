@@ -52,23 +52,22 @@ discordClient.on("ready", () => {
   console.log(`Logged in as ${discordClient.user.tag}!`);
 });
 
-/* var whitelist = ["http://localhost:3000", "http://localhost:3001"];
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+/* var corsOptions = {
+  origin: "https://destcom.herokuapp.com/",
+  optionsSuccessStatus: 200,
 };
-
 app.use(cors(corsOptions)); */
+
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(express.json());
 app.use(helmet());
 
 app.post("/api/sent-message", async (req, res) => {
+  if (
+    process.env.PROJECT_ENVIRONMENT !== "dev" &&
+    req.headers.host !== "destcom.herokuapp.com"
+  )
+    return res.status(403).send("Forbidden");
   const { name, mail, message } = req.body;
 
   const user = await discordClient.users
@@ -142,9 +141,12 @@ app.get("/api/get-social-links", async (req, res) => {
   }
 });
 
-/* app.get("/api", (req, res) => {
-  res.json({ message: "Hello this is the server" });
-}); */
+app.get("/api", (req, res) => {
+  res.json({
+    message: "Hello this is the server",
+    ip: req.headers.host,
+  });
+});
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));

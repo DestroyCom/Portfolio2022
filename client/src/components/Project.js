@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { Buffer } from "buffer";
 import { useTranslation } from "react-i18next";
+
 import leftArrow from "../assets/img/left-arrow.svg";
 import externalLink from "../assets/img/external-link.svg";
+import gitSquare from "../assets/img/git_square.svg";
 
 import "../styles/Project.css";
 
@@ -87,18 +89,29 @@ function Project({ projectData, setProjectData, setWorkSection }) {
                 <p>{projectData.description_en}</p>
               )}
 
-              {projectData.url && (
-                <motion.div
-                  whileTap={{ scale: 0.99, opacity: 0.5 }}
-                  className="btn-project-container noselect"
-                  onClick={() => goTo(projectData.url, projectData.id)}
-                >
-                  <div>
-                    <p>{t("project.textTwo")}</p>
-                  </div>
-                  <img src={externalLink} alt="goTo" />
-                </motion.div>
-              )}
+              <h4>{t("project.textTwo")}</h4>
+              <div className="linksContainer">
+                {projectData.url && (
+                  <motion.div
+                    whileTap={{ scale: 0.99, opacity: 0.5 }}
+                    className="btn-project-container noselect"
+                    onClick={() => goTo(projectData.url, projectData.id)}
+                  >
+                    <img src={externalLink} alt="goTo" />
+                    <p>{t("project.textSix")}</p>
+                  </motion.div>
+                )}
+                {projectData.github && (
+                  <motion.div
+                    whileTap={{ scale: 0.99, opacity: 0.5 }}
+                    className="btn-project-container noselect"
+                    onClick={() => goTo(projectData.github, projectData.id)}
+                  >
+                    <img src={gitSquare} alt="goTo" />
+                    <p>{t("project.textFive")}</p>
+                  </motion.div>
+                )}
+              </div>
             </div>
             <div className="content-box project-specs">
               <div className="tech-box">
