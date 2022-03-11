@@ -64,7 +64,7 @@ app.use(helmet());
 
 app.post("/api/sent-message", async (req, res) => {
   if (
-    process.env.PROJECT_ENVIRONMENT !== "dev" &&
+    process.env.PROJECT_ENVIRONMENT === "prod" &&
     req.headers.host !== "destcom.herokuapp.com"
   )
     return res.status(403).send("Forbidden");
