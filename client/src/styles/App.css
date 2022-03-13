@@ -8,7 +8,7 @@
   /* overflow-x: hidden; */
 }
 
-#LOAD{
+#LOAD {
   width: 100%;
   height: 100%;
   background-color: var(--shadow-blue);
@@ -26,12 +26,14 @@
 }
 
 @media only screen and (max-height: 860px) {
-  #landing, #myworks, #aboutme, #contact {
+
+  #myworks,
+  #aboutme,
+  #contact {
     height: auto;
   }
 
-  .footer_container{
+  .footer_container {
     padding: unset;
   }
 }
-
