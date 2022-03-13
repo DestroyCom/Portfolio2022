@@ -15,7 +15,12 @@ function Me({ section2Ref }) {
           <img src={profile} alt="profile" />
         </div>
         <div className="about_me_text">
-          <p>{t("about.description")}</p>
+          <p>{t("about.description.textOne")}</p>
+          <p>{t("about.description.textTwo")}</p>
+          <p>{t("about.description.textThree")}</p>
+          <p>{t("about.description.textFour")}</p>
+          <p>{t("about.description.textFive")}</p>
+          <p>{t("about.description.textSix")}</p>
         </div>
       </div>
     </div>

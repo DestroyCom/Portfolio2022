@@ -52,7 +52,7 @@ function Works({ section1Ref, setProjectData }) {
 
       {!isBigScreen ? (
         <>
-          {projects && (
+          {projects ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -91,11 +91,15 @@ function Works({ section1Ref, setProjectData }) {
                 ))}
               </motion.div>
             </motion.div>
+          ) : (
+            <div className="project_box_container_mobile">
+              <h1>CHARGEMENT</h1>
+            </div>
           )}
         </>
       ) : (
         <>
-          {projects && (
+          {projects ? (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -124,6 +128,10 @@ function Works({ section1Ref, setProjectData }) {
                 </div>
               ))}
             </motion.div>
+          ) : (
+            <div className="project_box_container">
+              <h1>CHARGEMENT</h1>
+            </div>
           )}
         </>
       )}

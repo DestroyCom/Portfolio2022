@@ -24,8 +24,18 @@ const resources = {
       },
       about: {
         title: "Learn to know me",
-        description:
-          "Hi there!<br/>I'm Antoine, French junior web developer.<br/>Attracted by new technologies and the world of tomorrow, I started to learn computer development as autodidact,<br/>When I reached my university studies, I naturally turned to computer science, then reoriented in the specificity of the WEB.<br/>Currently at the beginning of my career, I have at heart to discover as many things as possible and to explore new challenges.<br/>Being creative, my free time allows me to explore photography, video and the exploration of tomorrow (and the time to play video games too)",
+        description: {
+          textOne: "Hi there!",
+          textTwo: "I'm Antoine, French junior web developer.",
+          textThree:
+            "Attracted by new technologies and the world of tomorrow, I started to learn computer development as autodidact,",
+          textFour:
+            "When I reached my university studies, I naturally turned to computer science, then reoriented in the specificity of the WEB.",
+          textFive:
+            "Currently at the beginning of my career, I have at heart to discover as many things as possible and to explore new challenges.",
+          textSix:
+            "Being creative, my free time allows me to explore photography, video and the exploration of tomorrow (and the time to play video games too)",
+        },
       },
       contact: {
         blocOne: {
@@ -79,8 +89,18 @@ const resources = {
       },
       about: {
         title: "Faisons connaissance",
-        description:
-          "Salut !<br/>Moi c'est Antoine, développeur web junior français.<br/>Attiré par les nouvelles technologies et le monde de demain, j'ai commencé à apprendre le développement informatique en autodidacte,<br/>arrivé dans mes études supérieures, je me suis naturellement tourné vers l'informatique, puis réorienté dans la spécificité du WEB.<br/>Actuellement au début de ma carrière, j'ai à coeur de découvrir le plus de choses possible et d'explorer de nouveaux challenges.<br/>Étant créatif, mon temps libre me laisse explorer la photographie, la vidéo et la découverte de demain (et le temps de jouer aux jeux vidéos également)",
+        description: {
+          textOne: "Salut !",
+          textTwo: "Moi c'est Antoine, développeur web junior français.",
+          textThree:
+            "Attiré par les nouvelles technologies et le monde de demain, j'ai commencé à apprendre le développement informatique en autodidacte,",
+          textFour:
+            "arrivé dans mes études supérieures, je me suis naturellement tourné vers l'informatique, puis réorienté dans la spécificité du WEB.",
+          textFive:
+            "Actuellement au début de ma carrière, j'ai à coeur de découvrir le plus de choses possible et d'explorer de nouveaux challenges.",
+          textSix:
+            "Étant créatif, mon temps libre me laisse explorer la photographie, la vidéo et la découverte de demain (et le temps de jouer aux jeux vidéos également)",
+        },
       },
       contact: {
         blocOne: {

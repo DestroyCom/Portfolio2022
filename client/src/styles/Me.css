@@ -32,8 +32,8 @@
 }
 
 .about_me_text>p{
-    width: 130%;
-    height: 100%;
+    width: 135%;
+    font-size: 1.2em;
 }
 
 @media only screen and (max-width: 1023px) {

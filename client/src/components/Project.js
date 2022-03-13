@@ -39,6 +39,13 @@ function Project({ projectData, setProjectData, setWorkSection }) {
     }
   }, []);
 
+  const getLineDescription = (description) => {
+    const text = description;
+    const newText = text.split("<br/>").map((str) => <p>{str}</p>);
+
+    return newText;
+  };
+
   return (
     <>
       {projectData ? (
@@ -84,36 +91,49 @@ function Project({ projectData, setProjectData, setWorkSection }) {
             <div className="content-box project-descr">
               <h3>{t("project.textOne")}</h3>
               {i18n.resolvedLanguage === "fr" ? (
-                <p>{projectData.description_fr}</p>
+                <div className="descr-p">
+                  {getLineDescription(projectData.description_fr)}
+                </div>
               ) : (
-                <p>{projectData.description_en}</p>
+                <div className="descr-p">
+                  {getLineDescription(projectData.description_en)}
+                </div>
               )}
-
-              {(projectData.url || projectData.github) && (
-                <h4>{t("project.textTwo")}</h4>
-              )}
-
-              <div className="linksContainer">
-                {projectData.url && (
-                  <motion.div
-                    whileTap={{ scale: 0.99, opacity: 0.5 }}
-                    className="btn-project-container noselect"
-                    onClick={() => goTo(projectData.url, projectData.id)}
-                  >
-                    <img src={externalLink} alt="goTo" />
-                    <p>{t("project.textSix")}</p>
-                  </motion.div>
+              <div className="sectionLinks">
+                {(projectData.url || projectData.github) && (
+                  <h4>{t("project.textTwo")}</h4>
                 )}
-                {projectData.github && (
-                  <motion.div
-                    whileTap={{ scale: 0.99, opacity: 0.5 }}
-                    className="btn-project-container noselect"
-                    onClick={() => goTo(projectData.github, projectData.id)}
-                  >
-                    <img src={gitSquare} alt="goTo" />
-                    <p>{t("project.textFive")}</p>
-                  </motion.div>
-                )}
+
+                <div className="linksContainer">
+                  {projectData.url && (
+                    <motion.div
+                      whileTap={{ scale: 0.99, opacity: 0.5 }}
+                      className={
+                        projectData.github
+                          ? "btn-project-container noselect"
+                          : "solo-link btn-project-container noselect"
+                      }
+                      onClick={() => goTo(projectData.url, projectData.id)}
+                    >
+                      <img src={externalLink} alt="goTo" />
+                      <p>{t("project.textSix")}</p>
+                    </motion.div>
+                  )}
+                  {projectData.github && (
+                    <motion.div
+                      whileTap={{ scale: 0.99, opacity: 0.5 }}
+                      className={
+                        projectData.url
+                          ? "btn-project-container noselect"
+                          : "solo-link btn-project-container noselect"
+                      }
+                      onClick={() => goTo(projectData.github, projectData.id)}
+                    >
+                      <img src={gitSquare} alt="goTo" />
+                      <p>{t("project.textFive")}</p>
+                    </motion.div>
+                  )}
+                </div>
               </div>
             </div>
             <div className="content-box project-specs">
