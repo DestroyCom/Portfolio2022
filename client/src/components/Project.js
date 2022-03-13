@@ -89,7 +89,10 @@ function Project({ projectData, setProjectData, setWorkSection }) {
                 <p>{projectData.description_en}</p>
               )}
 
-              <h4>{t("project.textTwo")}</h4>
+              {(projectData.url || projectData.github) && (
+                <h4>{t("project.textTwo")}</h4>
+              )}
+
               <div className="linksContainer">
                 {projectData.url && (
                   <motion.div

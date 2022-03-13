@@ -42,6 +42,23 @@
     font-weight: 200;
 }
 
+.old-works{
+    margin-top: 7%;
+    width: 90%;
+    text-align: right;
+}
+
+.old-works>a{
+    color: var(--dark-electric-blue);
+    text-decoration: none;
+    font-style: italic;
+    transition: opacity 0.3s;
+}
+
+.old-works>a:hover{
+    opacity: 0.7;
+}
+
 @media only screen and (max-width: 1023px) {
     #myworks {
         height: auto;

@@ -127,6 +127,21 @@ function Works({ section1Ref, setProjectData }) {
           )}
         </>
       )}
+      <p className="old-works">
+        {t("works.textOne")}{" "}
+        <a href="https://github.com/DestroyCom" alt="GitHub" target="blank">
+          {t("works.textTwo")}
+        </a>{" "}
+        {t("works.textThree")}{" "}
+        <a
+          href="https://destroykeaum.alwaysdata.net/realisation.php"
+          alt="portfolio V1"
+          target="blank"
+        >
+          {t("works.textFour")}
+        </a>{" "}
+        .
+      </p>
     </div>
   );
 }

@@ -16,6 +16,12 @@ const resources = {
       landing: {
         text: "Web developer",
       },
+      works: {
+        textOne: "See all my projects on",
+        textTwo: "my GitHub",
+        textThree: "and my old ones",
+        textFour: "in my archives",
+      },
       about: {
         title: "Learn to know me",
         description:
@@ -64,6 +70,12 @@ const resources = {
       },
       landing: {
         text: "Développeur Web",
+      },
+      works: {
+        textOne: "Voir tout mes projets sur",
+        textTwo: "mon GitHub",
+        textThree: "et mes anciens dans",
+        textFour: "mes archives",
       },
       about: {
         title: "Faisons connaissance",

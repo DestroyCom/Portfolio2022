@@ -3,12 +3,10 @@ require("dotenv").config();
 const HTTP = require("http");
 const PG = require("pg");
 const path = require("path");
-//const cors = require("cors");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const helmet = require("helmet");
-//const API_KEY = process.env.API_KEY;
 
 var postgrestClient = null;
 
@@ -52,130 +50,89 @@ discordClient.on("ready", () => {
   console.log(`Logged in as ${discordClient.user.tag}!`);
 });
 
-/* var corsOptions = {
-  origin: "https://destcom.herokuapp.com/",
-  optionsSuccessStatus: 200,
-};
-app.use(cors(corsOptions)); */
-
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(express.json());
 app.use(helmet());
 
 app.post("/api/sent-message", async (req, res) => {
-  if (
-    req.headers["sec-fetch-site"] === "same-origin" ||
-    req.headers["sec-fetch-site"] === "same-site"
-  ) {
-    const { name, mail, message } = req.body;
+  const { name, mail, message } = req.body;
 
-    const user = await discordClient.users
-      .fetch(process.env.DISCORD_USER_ID)
-      .catch(() => null);
+  const user = await discordClient.users
+    .fetch(process.env.DISCORD_USER_ID)
+    .catch(() => null);
 
-    if (!user)
-      return res
-        .status(500)
-        .send("Impossible d'envoyer le message. Raison : User not found");
-
-    const embed = new DISCORDJS.MessageEmbed()
-      .setColor("#0099ff")
-      .setTitle("Message de la part de " + name + " (" + mail + ")")
-      .addFields({
-        name: "Message :",
-        value: message,
-      })
-      .setTimestamp();
-
-    await user.send({ embeds: [embed] }).catch(() => {
-      return res
-        .status(500)
-        .send(
-          "Impossible d'envoyer le message. Raison : User has close the service"
-        );
-    });
-
+  if (!user)
     return res
-      .status(200)
-      .json({ messageEn: "Message sent", messageFr: "Message envoyé" });
-  } else {
-    return res.sendStatus(403);
-  }
+      .status(500)
+      .send("Impossible d'envoyer le message. Raison : User not found");
+
+  const embed = new DISCORDJS.MessageEmbed()
+    .setColor("#0099ff")
+    .setTitle("Message de la part de " + name + " (" + mail + ")")
+    .addFields({
+      name: "Message :",
+      value: message,
+    })
+    .setTimestamp();
+
+  await user.send({ embeds: [embed] }).catch(() => {
+    return res
+      .status(500)
+      .send(
+        "Impossible d'envoyer le message. Raison : User has close the service"
+      );
+  });
+
+  return res
+    .status(200)
+    .json({ messageEn: "Message sent", messageFr: "Message envoyé" });
 });
 
 app.get("/api/get-project", async (req, res) => {
-  if (
-    req.headers["sec-fetch-site"] === "same-origin" ||
-    req.headers["sec-fetch-site"] === "same-site"
-  ) {
-    const query = {
-      text: `SELECT * FROM public.projects ORDER BY random() LIMIT 6`,
-    };
+  const query = {
+    text: `SELECT * FROM public.projects ORDER BY random() LIMIT 6`,
+  };
 
-    try {
-      const result = await postgrestClient.query(query);
-      return res.status(200).json(result.rows);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    return res.sendStatus(403);
+  try {
+    const result = await postgrestClient.query(query);
+    return res.status(200).json(result.rows);
+  } catch (err) {
+    console.log(err);
   }
 });
 
 app.get("/api/get-single-project", async (req, res) => {
-  if (
-    req.headers["sec-fetch-site"] === "same-origin" ||
-    req.headers["sec-fetch-site"] === "same-site"
-  ) {
-    const { projectId } = req.query;
-    const query = {
-      text: `SELECT * FROM public.projects WHERE id = ${projectId}`,
-    };
+  const { projectId } = req.query;
+  const query = {
+    text: `SELECT * FROM public.projects WHERE id = ${projectId}`,
+  };
 
-    try {
-      const result = await postgrestClient.query(query);
-      return res.status(200).json(result.rows[0]);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    return res.sendStatus(403);
+  try {
+    const result = await postgrestClient.query(query);
+    return res.status(200).json(result.rows[0]);
+  } catch (err) {
+    console.log(err);
   }
 });
 
 app.get("/api/get-social-links", async (req, res) => {
-  if (
-    req.headers["sec-fetch-site"] === "same-origin" ||
-    req.headers["sec-fetch-site"] === "same-site"
-  ) {
-    const query = {
-      text: `SELECT * FROM public.sociallinks`,
-    };
+  const query = {
+    text: `SELECT * FROM public.sociallinks`,
+  };
 
-    try {
-      const result = await postgrestClient.query(query);
-      return res.status(200).json(result.rows);
-    } catch (err) {
-      console.log(err);
-    }
-  } else {
-    return res.sendStatus(403);
+  try {
+    const result = await postgrestClient.query(query);
+    return res.status(200).json(result.rows);
+  } catch (err) {
+    console.log(err);
   }
 });
 
 app.get("/api", (req, res) => {
-  if (
-    req.headers["sec-fetch-site"] === "same-origin" ||
-    req.headers["sec-fetch-site"] === "same-site"
-  ) {
-    res.json({
-      message: "Hello this is the server",
-      ip: req.headers.host,
-    });
-  } else {
-    return res.sendStatus(403);
-  }
+  res.json({
+    message: "Hello this is the server",
+    ip: req.headers.host,
+  });
 });
 
 app.get("*", (req, res) => {
