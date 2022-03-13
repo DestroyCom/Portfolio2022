@@ -19,7 +19,7 @@ const resources = {
       about: {
         title: "Learn to know me",
         description:
-          "EN ! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.",
+          "Hi there!<br/>I'm Antoine, French junior web developer.<br/>Attracted by new technologies and the world of tomorrow, I started to learn computer development as autodidact,<br/>When I reached my university studies, I naturally turned to computer science, then reoriented in the specificity of the WEB.<br/>Currently at the beginning of my career, I have at heart to discover as many things as possible and to explore new challenges.<br/>Being creative, my free time allows me to explore photography, video and the exploration of tomorrow (and the time to play video games too)",
       },
       contact: {
         blocOne: {
@@ -68,7 +68,7 @@ const resources = {
       about: {
         title: "Faisons connaissance",
         description:
-          "FR ! Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.",
+          "Salut !<br/>Moi c'est Antoine, développeur web junior français.<br/>Attiré par les nouvelles technologies et le monde de demain, j'ai commencé à apprendre le développement informatique en autodidacte,<br/>arrivé dans mes études supérieures, je me suis naturellement tourné vers l'informatique, puis réorienté dans la spécificité du WEB.<br/>Actuellement au début de ma carrière, j'ai à coeur de découvrir le plus de choses possible et d'explorer de nouveaux challenges.<br/>Étant créatif, mon temps libre me laisse explorer la photographie, la vidéo et la découverte de demain (et le temps de jouer aux jeux vidéos également)",
       },
       contact: {
         blocOne: {
