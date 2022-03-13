@@ -10,6 +10,7 @@ const resources = {
     translation: {
       navigation: {
         works: "Works",
+        works2: "Some projects",
         about: "About Me",
         contact: "Contact",
       },
@@ -75,6 +76,7 @@ const resources = {
     translation: {
       navigation: {
         works: "Réalisations",
+        works2: "Quelques réalisations",
         about: "À propos",
         contact: "Contact",
       },

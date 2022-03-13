@@ -24,3 +24,14 @@
     background-color: var(--dark-electric-blue);
   }
 }
+
+@media only screen and (max-height: 860px) {
+  #landing, #myworks, #aboutme, #contact {
+    height: auto;
+  }
+
+  .footer_container{
+    padding: unset;
+  }
+}
+

@@ -48,7 +48,7 @@ function Works({ section1Ref, setProjectData }) {
 
   return (
     <div id="myworks" ref={section1Ref}>
-      <h2>{t("navigation.works")}</h2>
+      <h2>{t("navigation.works2")}</h2>
 
       {!isBigScreen ? (
         <>
