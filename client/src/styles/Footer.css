@@ -46,6 +46,40 @@ footer{
     font-weight: 600;
 }
 
+#techsinfo{
+    width: 9vw;
+    background-color: var(--prussian-blue);
+    height: auto;
+    position: fixed;
+    bottom: 8vh;
+    left: 88vw;
+    border-radius: 9px;
+    padding: 0.5em;
+}
+
+#techsinfo>h2{
+    font-size: 20px;
+}
+#techsinfo>div{
+    text-align: left;
+}
+
+#techsinfo>div>p{
+    font-size: 15px;
+    margin: 0.2em auto;
+}
+
+#techsinfo>div>.types{
+    font-weight: 200;
+    font-style: italic;
+    font-size: 15px;
+    text-align: right;
+}
+
+.thisTechs:hover{
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 1023px) {
     .footer_container>div:nth-child(2) {
         margin: auto 0;
