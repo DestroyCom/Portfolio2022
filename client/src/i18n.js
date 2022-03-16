@@ -58,8 +58,12 @@ const resources = {
           langTwo: "English version",
         },
         textThree: {
-          partOne: "Fait main avec",
-          partTwo: "ça  ",
+          partOne: "Made by me with",
+          partTwo: "this",
+        },
+        textModal: {
+          madeWith: "Made with",
+          hosting: "Hosting",
         },
       },
       project: {
@@ -124,8 +128,12 @@ const resources = {
           langTwo: "English version",
         },
         textThree: {
-          partOne: "Made by me with",
-          partTwo: "this",
+          partOne: "Fait main avec",
+          partTwo: "ça",
+        },
+        textModal: {
+          madeWith: "Fait grâce à",
+          hosting: "Hébergement",
         },
       },
       project: {

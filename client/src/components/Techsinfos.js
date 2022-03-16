@@ -1,6 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 function Techsinfo() {
+  const { i18n, t } = useTranslation();
+
   return (
     <AnimatePresence>
       <motion.div
@@ -13,7 +16,7 @@ function Techsinfo() {
         key="techs"
         id="techsinfo"
       >
-        <h2>Made with this</h2>
+        <h2>{t("footer.textModal.madeWith")}</h2>
         <div>
           <p>Figma</p>
           <p className="types">Design</p>
@@ -33,7 +36,7 @@ function Techsinfo() {
         </div>
         <div>
           <p>Heroku</p>
-          <p className="types">Hosting</p>
+          <p className="types">{t("footer.textModal.hosting")}</p>
         </div>
       </motion.div>
     </AnimatePresence>
