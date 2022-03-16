@@ -1,12 +1,17 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
+
+import Techsinfo from "./Techsinfos";
 
 import "../styles/Footer.css";
 
 function Footer() {
   const { i18n, t } = useTranslation();
   const isBigScreen = useMediaQuery({ query: "(min-width: 1024px)" });
+
+  const [displayTechs, setDisplayTechs] = useState(false);
 
   return (
     <>
@@ -59,7 +64,11 @@ function Footer() {
             <div>
               <p>
                 {t("footer.textThree.partOne")}{" "}
-                <span className="underline">
+                <span
+                  className="underline thisTechs"
+                  onMouseEnter={() => setDisplayTechs(true)}
+                  onMouseLeave={() => setDisplayTechs(false)}
+                >
                   {t("footer.textThree.partTwo")}
                 </span>
               </p>
@@ -89,6 +98,7 @@ function Footer() {
           </div>
         </footer>
       )}
+      {displayTechs && <Techsinfo />}
     </>
   );
 }
