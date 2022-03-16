@@ -11,6 +11,7 @@ footer{
     padding: 1em;
     font-weight: 200;
     font-size: 16px;
+    margin: 0 auto;
 }
 
 .footer_container>div:nth-child(2){
