@@ -1,6 +1,5 @@
 {
   "schemaVersion": 2,
-  "templateId": "node/16.14.1",
   "dockerfileLines": [
     "FROM node:16.14.1-alpine",
     "RUN apk update && apk upgrade && apk add --no-cache git",
