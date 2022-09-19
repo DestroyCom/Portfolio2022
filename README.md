@@ -11,4 +11,4 @@ My personal portfolio with some of my projects and a brief description of who I 
 - Framer Motion [Framer](https://framer.com/motion/)
 - Discord API [Discord.js](https://discord.js.org/)
 - PostgreSQL [PostgreSQL](https://www.postgresql.org/)
-- Heroku [Heroku](https://www.heroku.com/)
+- CapRover [](.)
