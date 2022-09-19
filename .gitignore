@@ -1,6 +1,7 @@
 database-manager
 .env
 crypto.js
+deploy.tar
 
 # dependencies
 /node_modules
