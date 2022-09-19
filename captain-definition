@@ -3,7 +3,7 @@
   "dockerfileLines": [
     "FROM node:16",
     "WORKDIR /app",
-    "COPY $.json /app/",
+    "COPY *.json /app/",
     "RUN npm install && npm cache clean --force",
     "RUN npm run build",
     "COPY . /app/",
