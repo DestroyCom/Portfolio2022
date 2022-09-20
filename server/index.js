@@ -21,9 +21,7 @@ if (process.env.PROJECT_ENVIRONMENT === "dev") {
     database: process.env.PGDATABASE,
     port: process.env.PGPORT,
     host: process.env.PGHOST,
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    ssl: false,
   });
 } else if (process.env.PROJECT_ENVIRONMENT === "prod") {
   postgrestClient = new PG.Client({
