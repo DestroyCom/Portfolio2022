@@ -5,8 +5,6 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
 
-import { toOtherPage } from "../gsapFunction/Works";
-
 import "../styles/Works.css";
 
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.6] };
@@ -30,6 +28,7 @@ function Works({ section1Ref, setProjectData }) {
             carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
           );
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getUrlAsBlob = (base64, mimetype) => {

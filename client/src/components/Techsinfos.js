@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 function Techsinfo() {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <AnimatePresence>

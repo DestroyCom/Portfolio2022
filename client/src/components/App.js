@@ -1,7 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { useTranslation } from "react-i18next";
 
 import Index from "./Index";
 import Project from "./Project";

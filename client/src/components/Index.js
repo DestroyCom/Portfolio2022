@@ -24,6 +24,7 @@ function Index({ projectData, setProjectData, workSection, setWorkSection }) {
       section1Ref.current.scrollIntoView({});
       setWorkSection(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
