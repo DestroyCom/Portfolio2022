@@ -1,7 +1,7 @@
 FROM node:18
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY .s /usr/src/app
+COPY . /usr/src/app
 COPY ./client/build /app 
 RUN chmod -R 777 /app
 RUN npm install && npm cache clean --force
