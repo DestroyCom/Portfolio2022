@@ -1,7 +1,7 @@
 FROM node:18
-RUN mkdir -p app
-WORKDIR /app
-COPY . /app/
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY . /usr/src/app
 RUN npm install && npm cache clean --force
 ENV PORT 3001
 EXPOSE 3001
