@@ -1,5 +1,4 @@
 import gsap from "gsap";
-import { useRef } from "react";
 
 export const enterAnimMobile = (name, sub, icone, tl) => {
   const q = gsap.utils.selector(name);

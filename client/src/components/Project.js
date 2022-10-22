@@ -37,6 +37,7 @@ function Project({ projectData, setProjectData, setWorkSection }) {
     if (projectData === null) {
       setProjectData(JSON.parse(sessionStorage.getItem("projectData")));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getLineDescription = (description) => {

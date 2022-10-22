@@ -21,9 +21,7 @@ if (process.env.PROJECT_ENVIRONMENT === "dev") {
     database: process.env.PGDATABASE,
     port: process.env.PGPORT,
     host: process.env.PGHOST,
-    ssl: {
-      rejectUnauthorized: false,
-    },
+    ssl: false,
   });
 } else if (process.env.PROJECT_ENVIRONMENT === "prod") {
   postgrestClient = new PG.Client({
@@ -39,10 +37,10 @@ postgrestClient.connect();
 const DISCORDJS = require("discord.js");
 const discordClient = new DISCORDJS.Client({
   intents: [
-    DISCORDJS.Intents.FLAGS.GUILDS,
-    DISCORDJS.Intents.FLAGS.DIRECT_MESSAGES,
-    DISCORDJS.Intents.FLAGS.DIRECT_MESSAGE_TYPING,
-    DISCORDJS.Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
+    DISCORDJS.GatewayIntentBits.Guilds,
+    DISCORDJS.GatewayIntentBits.DirectMessages,
+    DISCORDJS.GatewayIntentBits.DirectMessageTyping,
+    DISCORDJS.GatewayIntentBits.DirectMessageReactions,
   ],
 });
 
@@ -66,7 +64,7 @@ app.post("/api/sent-message", async (req, res) => {
       .status(500)
       .send("Impossible d'envoyer le message. Raison : User not found");
 
-  const embed = new DISCORDJS.MessageEmbed()
+  const embed = new DISCORDJS.EmbedBuilder()
     .setColor("#0099ff")
     .setTitle("Message de la part de " + name + " (" + mail + ")")
     .addFields({
