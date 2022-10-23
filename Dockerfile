@@ -1,10 +1,11 @@
 FROM node:18
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
-WORKDIR /home/node/app
-COPY package*.json ./
-RUN chmod 777 ./package*.json
-USER node
-RUN npm install
-COPY --chown=node:node . .
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY . /usr/src/app
+RUN cd client && npm install && npm run build
+COPY ./client/build /app 
+RUN chmod -R 777 /app
+RUN npm install && npm cache clean --force
+ENV PORT 3001
 EXPOSE 3001
 CMD [ "npm", "start" ]
