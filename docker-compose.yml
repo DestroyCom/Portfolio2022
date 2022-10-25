@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  app:
+    image: app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "49160:3001"
+    command: "npm start"
+    volumes:
+      - .:/usr/src/app:rw
+
+networks:
+  privatenetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.99.0/24
+          gateway: 192.168.99.1
