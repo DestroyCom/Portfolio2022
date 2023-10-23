@@ -1,11 +1,21 @@
-FROM node:18.11.0-alpine
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY . /usr/src/app
-RUN cd client && npm install && npm run build
-COPY ./client/build /app 
-RUN chmod -R 777 /app
-RUN npm install && npm cache clean --force
-ENV PORT 3001
-EXPOSE 3001
+FROM node:lts-alpine as builder
+
+WORKDIR /build
+
+COPY client/package*.json ./
+RUN npm install
+
+COPY client/ ./
+RUN npm run build
+
+FROM node:lts-alpine as runner
+
+WORKDIR /app
+COPY --from=builder /build /client/build
+
+COPY ./package*.json ./
+RUN npm install
+
+COPY ./server/ ./server/
+
 CMD [ "npm", "start" ]
