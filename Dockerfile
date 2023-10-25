@@ -5,13 +5,15 @@ WORKDIR /build
 COPY client/package*.json ./
 RUN npm install
 
-COPY client/ ./
+COPY ./client/ ./
 RUN npm run build
 
 FROM node:lts-alpine as runner
 
 WORKDIR /app
-COPY --from=builder /build /client/build
+COPY --from=builder ./build ./tmpClient
+RUN mkdir ./client
+RUN cp -r ./tmpClient/build ./client/build
 
 ARG PROJECT_ENVIRONMENT=PROJECT_ENVIRONMENT
 ENV PROJECT_ENVIRONMENT=${PROJECT_ENVIRONMENT}

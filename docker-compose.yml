@@ -21,8 +21,6 @@ services:
     networks:
       - hosted
       - postgres
-    #ports:
-    #- "2260:3001"
 
 networks:
   hosted:
