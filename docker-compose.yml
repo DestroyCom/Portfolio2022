@@ -1,23 +1,29 @@
 version: "3"
 
 services:
-  app:
-    image: app
-    restart: always
+  portfolio2022:
+    container_name: portfolio2022
+    image: portfolio2022:latest
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "49160:3001"
-    command: "npm start"
-    volumes:
-      - .:/usr/src/app:rw
+      args:
+        - PROJECT_ENVIRONMENT=${PROJECT_ENVIRONMENT}
+        - PGHOST=${PGHOST}
+        - PGDATABASE=${PGDATABASE}
+        - PGUSER=${PGUSER}
+        - PGPASSWORD=${PGPASSWORD}
+        - PGPORT=${PGPORT}
+        - DATABASE_URL=${DATABASE_URL}
+        - DISCORD_TOKEN=${DISCORD_TOKEN}
+        - DISCORD_USER_ID=${DISCORD_USER_ID}
+    restart: on-failure
+    networks:
+      - hosted
+      - postgres
 
 networks:
-  privatenetwork:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.99.0/24
-          gateway: 192.168.99.1
+  hosted:
+    external: true
+  postgres:
+    external: true

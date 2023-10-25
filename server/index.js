@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const HTTP = require("http");
+/* const HTTP = require("http"); */
 const PG = require("pg");
 const path = require("path");
 const express = require("express");
@@ -10,9 +10,9 @@ const helmet = require("helmet");
 
 var postgrestClient = null;
 
-setInterval(function () {
+/* setInterval(function () {
   HTTP.get(process.env.HEROKU_APP_URL);
-}, 300000);
+}, 300000); */
 
 if (process.env.PROJECT_ENVIRONMENT === "dev") {
   postgrestClient = new PG.Client({

@@ -1,11 +1,43 @@
-FROM node:18.11.0-alpine
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY . /usr/src/app
-RUN cd client && npm install && npm run build
-COPY ./client/build /app 
-RUN chmod -R 777 /app
-RUN npm install && npm cache clean --force
-ENV PORT 3001
-EXPOSE 3001
+FROM node:lts-alpine as builder
+
+WORKDIR /build
+
+COPY client/package*.json ./
+RUN npm install
+
+COPY ./client/ ./
+RUN npm run build
+
+FROM node:lts-alpine as runner
+
+WORKDIR /app
+COPY --from=builder ./build ./tmpClient
+RUN mkdir ./client
+RUN cp -r ./tmpClient/build ./client/build
+
+ARG PROJECT_ENVIRONMENT=PROJECT_ENVIRONMENT
+ENV PROJECT_ENVIRONMENT=${PROJECT_ENVIRONMENT}
+ARG PGHOST=PGHOST
+ENV PGHOST=${PGHOST}
+ARG PGDATABASE=PGDATABASE
+ENV PGDATABASE=${PGDATABASE}
+ARG PGUSER=PGUSER
+ENV PGUSER=${PGUSER}
+ARG PGPASSWORD=PGPASSWORD
+ENV PGPASSWORD=${PGPASSWORD}
+ARG PGPORT=PGPORT
+ENV PGPORT=${PGPORT}
+ARG DATABASE_URL=DATABASE_URL
+ENV DATABASE_URL=${DATABASE_URL}
+ARG DISCORD_TOKEN=DISCORD_TOKEN
+ENV DISCORD_TOKEN=${DISCORD_TOKEN}
+ARG DISCORD_USER_ID=DISCORD_USER_ID
+ENV DISCORD_USER_ID=${DISCORD_USER_ID}
+
+
+COPY ./package*.json ./
+RUN npm install
+
+COPY ./server/ ./server/
+
 CMD [ "npm", "start" ]
